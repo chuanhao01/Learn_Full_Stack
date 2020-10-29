@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, url_for
 app = Flask(__name__)
 
 @app.route('/')
@@ -12,3 +12,6 @@ def test():
 @app.route('/tests/')
 def tests():
     return 'The tests where are they'
+
+with app.test_request_context():
+    print(url_for('tests'))
